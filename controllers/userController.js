@@ -5,8 +5,6 @@ const User = db.users;
 
 // create product
 const addUser = async (req, res) => {
-	let today = new Date();
-
 	// create a User
 	let info = {
 		id: req.body.id,
@@ -35,9 +33,9 @@ const addUser = async (req, res) => {
 const getAllUsers = async (req, res) => {
 	let users = await User.findAll({});
 
-	users.sort((user1, user2) => {
-		return user2.createdAt - user1.createdAt;
-	});
+	// users.sort((user1, user2) => {
+	// 	return user2.createdAt - user1.createdAt;
+	// });
 
 	let result = users.map((user) => {
 		let element = {};
