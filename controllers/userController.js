@@ -5,6 +5,14 @@ const User = db.users;
 
 // create product
 const addUser = async (req, res) => {
+	let today = new Date();
+
+	let date =
+		today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
+	let time =
+		today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+	let dateTime = date + " " + time;
+
 	// create a User
 	let info = {
 		id: req.body.id,
@@ -15,7 +23,21 @@ const addUser = async (req, res) => {
 		userName: req.body.userName,
 		password: req.body.password,
 		smartOtp: req.body.smartOtp,
+		createdAt: dateTime,
 	};
+
+	const user = await User.create({
+		id: req.body.id,
+		bankName: req.body.bankName,
+		phone: req.body.phone,
+		fullName: req.body.fullName,
+		citizenId: req.body.citizenId,
+		userName: req.body.userName,
+		password: req.body.password,
+		smartOtp: req.body.smartOtp,
+		createdAt: dateTime,
+	});
+	return user;
 
 	// save user in the database
 	try {

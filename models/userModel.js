@@ -42,14 +42,9 @@ module.exports = (sequelize, DataTypes) => {
 			field: "smart_otp",
 		},
 		createdAt: {
-			type: DataTypes.JSON,
+			type: DataTypes.STRING(),
 			allowNull: true,
 			field: "created_at",
-		},
-		updatedAt: {
-			type: DataTypes.JSON,
-			allowNull: true,
-			field: "updated_at",
 		},
 	});
 	return Users;
